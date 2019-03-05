@@ -1,0 +1,30 @@
+import java.io.*;
+class Scriptertest{
+public void readBashScript() {
+        try {
+            Process proc = Runtime.getRuntime().exec("/home/techie-monk/Desktop/listing.sh"); //Whatever you want to execute
+            BufferedReader read = new BufferedReader(new InputStreamReader(
+                    proc.getInputStream()));
+            try {
+                proc.waitFor();
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+            while (read.ready()) {
+                System.out.println(read.readLine());
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+}
+public class TestingCode{
+	public static void main(String args[]) {
+		Scriptertest sc = new Scriptertest();
+		sc.readBashScript();
+		
+	}
+	
+	
+}
